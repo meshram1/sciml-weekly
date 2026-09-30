@@ -2,6 +2,7 @@
 
 Usage:  python3 build.py            # build into docs/
         python3 build.py --serve    # build, then serve on http://localhost:8000
+        python3 build.py --drafts   # also render draft: true posts (preview only; don't commit that docs/)
 """
 import html
 import math
@@ -149,7 +150,7 @@ def load_posts():
         if f.name.startswith("_"):
             continue  # _template.md etc.
         meta, body = read_front_matter(f.read_text())
-        if meta.get("draft"):
+        if meta.get("draft") and "--drafts" not in sys.argv:
             continue
         d = meta["date"]
         if isinstance(d, str):

@@ -26,6 +26,10 @@ git add -A && git commit -m "Issue #2" && git push   # Pages redeploys automatic
 
 Also add any new model releases to `data/releases.yaml`.
 
+Drafts (`draft: true`) are left out of the build. `python3 build.py --drafts --serve` previews them locally. Run a plain `python3 build.py` before committing, so drafts never end up in `docs/`.
+
+A weekly cloud routine drafts the next issue every Monday and opens a PR on a `draft/issue-NN` branch. To publish it: review the PR, remove `draft: true`, run `python3 build.py`, commit, and merge.
+
 ### Writing features
 
 - **Citations:** Markdown footnotes (`[^key]` in the text, `[^key]: Authors, "Title," venue, date. <url>` at the bottom). They render as a numbered **Sources** list.
