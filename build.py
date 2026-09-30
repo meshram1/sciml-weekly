@@ -4,6 +4,7 @@ Usage:  python3 build.py            # build into docs/
         python3 build.py --serve    # build, then serve on http://localhost:8000
         python3 build.py --drafts   # also render draft: true posts (preview only; don't commit that docs/)
 """
+import hashlib
 import html
 import math
 import re
@@ -293,7 +294,7 @@ def build_feed(posts):
 
 def main():
     global SITE_VERSION
-    SITE_VERSION = int((STATIC / "style.css").stat().st_mtime)
+    SITE_VERSION = hashlib.md5((STATIC / "style.css").read_bytes()).hexdigest()[:8]
     if OUT.exists():
         shutil.rmtree(OUT)
     (OUT / "posts").mkdir(parents=True)
