@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SciML Weekly</title>
+<meta name="description" content="A weekly digest of new research in scientific machine learning, statistical learning, and AI for fluid dynamics and physics. Each issue is written to be readable without a PhD in the subfield, and every claim links to its source.">
+<meta property="og:title" content="SciML Weekly">
+<meta property="og:description" content="A weekly digest of new research in scientific machine learning, statistical learning, and AI for fluid dynamics and physics. Each issue is written to be readable without a PhD in the subfield, and every claim links to its source.">
+<link rel="alternate" type="application/rss+xml" title="SciML Weekly" href="feed.xml">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css?v=1790745489">
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <a class="brand" href="index.html"><span class="brand-mark">∇</span> SciML Weekly</a>
+  <nav>
+    <a href="index.html">Issues</a>
+    <a href="releases.html">Model timeline</a>
+    <a href="tags.html">Topics</a>
+    <a href="about.html">About</a>
+    <button class="theme-toggle" type="button" aria-label="Toggle dark mode" onclick="toggleTheme()">◐</button>
+  </nav>
+</header>
+<main>
+<section class="intro">
+  <h1 class="tagline">New methods in AI for physics and fluids, explained once a week.</h1>
+  <p>A weekly digest of new research in scientific machine learning, statistical learning, and AI for fluid dynamics and physics. Each issue is written to be readable without a PhD in the subfield, and every claim links to its source.</p>
+</section>
+<section class="latest">
+  <p class="kicker">Latest · Issue #1 · Sep 30, 2026</p>
+  <h2><a href="posts/issue-01.html">Rollouts that stay stable, hourly AI weather, and small models that win</a></h2>
+  <p>This issue covers September 2026: WeatherNext 3 moves AI weather forecasting to hourly updates, two papers attack error build-up in long neural-PDE rollouts, and in both a CFD challenge and a distillation study, much smaller models beat big ones.</p>
+  <p class="tags"><a class="tag" href="tags.html#weather-climate">Weather &amp; climate</a> <a class="tag" href="tags.html#neural-operators">Neural operators</a> <a class="tag" href="tags.html#foundation-models">Foundation models</a> <a class="tag" href="tags.html#cfd-surrogates">CFD surrogates</a> <a class="tag" href="tags.html#benchmarks">Benchmarks</a></p>
+  <a class="read" href="posts/issue-01.html">Read issue · 12 min →</a>
+</section>
+
+</main>
+<footer class="foot">
+  <p>SciML Weekly · written by <a href="https://meshram1.github.io/">Aditya Kumar Meshram</a> ·
+  <a href="feed.xml">RSS</a> · Summaries are my own reading of the cited sources; always check the original.</p>
+</footer>
+</div>
+<script>
+function toggleTheme(){
+  var r=document.documentElement, dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+  r.dataset.theme=dark?'light':'dark'; try{localStorage.setItem('theme',r.dataset.theme)}catch(e){}
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+title: SciML Weekly
+tagline: New methods in AI for physics and fluids, explained once a week.
+description: >-
+  A weekly digest of new research in scientific machine learning, statistical learning,
+  and AI for fluid dynamics and physics. Each issue is written to be readable without a
+  PhD in the subfield, and every claim links to its source.
+author: Aditya Kumar Meshram
+author_url: https://meshram1.github.io/
+base_url: https://meshram1.github.io/sciml-weekly

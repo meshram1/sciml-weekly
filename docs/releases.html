@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Model timeline · SciML Weekly</title>
+<meta name="description" content="Dated timeline of AI models for physics, fluids and weather.">
+<meta property="og:title" content="Model timeline · SciML Weekly">
+<meta property="og:description" content="Dated timeline of AI models for physics, fluids and weather.">
+<link rel="alternate" type="application/rss+xml" title="SciML Weekly" href="feed.xml">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css?v=1790745489">
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <a class="brand" href="index.html"><span class="brand-mark">∇</span> SciML Weekly</a>
+  <nav>
+    <a href="index.html">Issues</a>
+    <a href="releases.html">Model timeline</a>
+    <a href="tags.html">Topics</a>
+    <a href="about.html">About</a>
+    <button class="theme-toggle" type="button" aria-label="Toggle dark mode" onclick="toggleTheme()">◐</button>
+  </nav>
+</header>
+<main>
+<h1 class="page-title">Model &amp; release timeline</h1>
+<p class="lede">Dated releases of notable AI models, datasets, and tools for physics, fluids, and weather. The date is the first public
+release (preprint, announcement, or software release), which can be earlier than journal publication. Every row links to its source.</p>
+<div class="chips" role="group" aria-label="Filter by domain"><button class="chip on" data-d="all">All</button><button class="chip" data-d="Benchmarks &amp; data">Benchmarks &amp; data</button><button class="chip" data-d="CFD surrogates">CFD surrogates</button><button class="chip" data-d="Methods">Methods</button><button class="chip" data-d="Neural operators">Neural operators</button><button class="chip" data-d="Physics foundation models">Physics foundation models</button><button class="chip" data-d="Tools">Tools</button><button class="chip" data-d="Weather &amp; climate">Weather &amp; climate</button></div>
+<div class="table-wrap"><table class="releases">
+<thead><tr><th>Date</th><th>Release</th><th>Domain</th><th>What it is</th><th>Access</th><th>Source</th></tr></thead>
+<tbody><tr data-d="Methods">
+<td class="nowrap"><time datetime="2026-09-15">Sep 15, 2026</time></td>
+<td><strong>VAMO</strong><div class="sub">Liao</div></td>
+<td><span class="dom">Methods</span></td>
+<td>Variational latent Markov operator; probabilistic latent transitions to keep long autoregressive PDE rollouts stable.</td>
+<td class="nowrap">Paper only</td>
+<td><a href="https://arxiv.org/abs/2609.16621">arXiv:2609.16621</a></td>
+</tr><tr data-d="CFD surrogates">
+<td class="nowrap"><time datetime="2026-09-15">Sep 15, 2026</time></td>
+<td><strong>Neural field ensembles (ONERA CRM challenge winner)</strong><div class="sub">Salesses</div></td>
+<td><span class="dom">CFD surrogates</span></td>
+<td>Conditional neural field predicting wall pressure and skin friction on the NASA CRM; ~1000x fewer parameters than the baseline.</td>
+<td class="nowrap"></td>
+<td><a href="https://arxiv.org/abs/2609.17160">arXiv:2609.17160</a></td>
+</tr><tr data-d="Benchmarks &amp; data">
+<td class="nowrap"><time datetime="2026-09-08">Sep 8, 2026</time></td>
+<td><strong>ONECYL benchmark</strong><div class="sub">Michel</div></td>
+<td><span class="dom">Benchmarks &amp; data</span></td>
+<td>450 cylinder-flow simulations (270k snapshots) across laminar to high-Re regimes for graph-based surrogates.</td>
+<td class="nowrap"></td>
+<td><a href="https://arxiv.org/abs/2609.08947">arXiv:2609.08947</a></td>
+</tr><tr data-d="Weather &amp; climate">
+<td class="nowrap"><time datetime="2026-09-03">Sep 3, 2026</time></td>
+<td><strong>WeatherNext 3</strong><div class="sub">Google DeepMind &amp; Google Research</div></td>
+<td><span class="dom">Weather &amp; climate</span></td>
+<td>Hourly global forecasts, 5 km on key surface variables, from a single FGN mesh transformer that ingests live satellite imagery.</td>
+<td class="nowrap">API / product</td>
+<td><a href="https://blog.google/innovation-and-ai/models-and-research/google-deepmind/introducing-weathernext-3/">Google blog</a></td>
+</tr><tr data-d="Neural operators">
+<td class="nowrap"><time datetime="2026-08-14">Aug 14, 2026</time></td>
+<td><strong>Transferable Latent Operator (TLO)</strong><div class="sub">Li et al.</div></td>
+<td><span class="dom">Neural operators</span></td>
+<td>Trained on Eulerian fields only, it rolls out Lagrangian particle trajectories zero-shot.</td>
+<td class="nowrap"></td>
+<td><a href="https://arxiv.org/abs/2608.14120">arXiv:2608.14120</a></td>
+</tr><tr data-d="Physics foundation models">
+<td class="nowrap"><time datetime="2026-08-12">Aug 12, 2026</time></td>
+<td><strong>TREX distillation</strong><div class="sub">Musekamp</div></td>
+<td><span class="dom">Physics foundation models</span></td>
+<td>Distills a fine-tuned PDE foundation model into a student that is orders of magnitude smaller and more than 10x faster.</td>
+<td class="nowrap"></td>
+<td><a href="https://arxiv.org/abs/2608.11937">arXiv:2608.11937</a></td>
+</tr><tr data-d="Tools">
+<td class="nowrap"><time datetime="2026-08">Aug 2026</time></td>
+<td><strong>PhysicsNeMo 26.08</strong><div class="sub">NVIDIA</div></td>
+<td><span class="dom">Tools</span></td>
+<td>Adds AeroJEPA, xDeepONet, Strata (weather), GeoTransolver/FLARE out of experimental, GP-based UQ head, LoRA fine-tuning.</td>
+<td class="nowrap">Open code</td>
+<td><a href="https://docs.nvidia.com/physicsnemo/latest/release-notes/index.html">Release notes</a></td>
+</tr><tr data-d="Weather &amp; climate">
+<td class="nowrap"><time datetime="2025-12-17">Dec 17, 2025</time></td>
+<td><strong>AIGFS / AIGEFS / HGEFS</strong><div class="sub">NOAA</div></td>
+<td><span class="dom">Weather &amp; climate</span></td>
+<td>First operational US AI global models. AIGFS is GraphCast-based and uses up to 99.7% less compute than GFS; HGEFS is a hybrid AI+physics ensemble.</td>
+<td class="nowrap">Operational</td>
+<td><a href="https://www.noaa.gov/news-release/noaa-deploys-new-generation-of-ai-driven-global-weather-models">NOAA</a></td>
+</tr><tr data-d="Weather &amp; climate">
+<td class="nowrap"><time datetime="2025-11">Nov 2025</time></td>
+<td><strong>WeatherNext 2</strong><div class="sub">Google DeepMind</div></td>
+<td><span class="dom">Weather &amp; climate</span></td>
+<td>Functional Generative Network (FGN) ensemble; hundreds of scenarios per initial state, 8x faster than its predecessor.</td>
+<td class="nowrap">API / product</td>
+<td><a href="https://blog.google/innovation-and-ai/models-and-research/google-deepmind/weathernext-2/">Google blog</a></td>
+</tr><tr data-d="Physics foundation models">
+<td class="nowrap"><time datetime="2025-11">Nov 2025</time></td>
+<td><strong>Walrus</strong><div class="sub">Polymathic AI</div></td>
+<td><span class="dom">Physics foundation models</span></td>
+<td>1.3B-parameter transformer for continuum dynamics, trained on 19 scenarios / 63 fields in 2D and 3D.</td>
+<td class="nowrap">Open weights</td>
+<td><a href="https://arxiv.org/abs/2511.15684">arXiv:2511.15684</a></td>
+</tr><tr data-d="Physics foundation models">
+<td class="nowrap"><time datetime="2025-09-17">Sep 17, 2025</time></td>
+<td><strong>General Physics Transformer (GPhyT)</strong><div class="sub">Wiesner</div></td>
+<td><span class="dom">Physics foundation models</span></td>
+<td>Trained on 1.8 TB of simulation data; in-context learning to generalize to unseen systems.</td>
+<td class="nowrap"></td>
+<td><a href="https://arxiv.org/abs/2509.13805">arXiv:2509.13805</a></td>
+</tr><tr data-d="Weather &amp; climate">
+<td class="nowrap"><time datetime="2025-07-01">Jul 1, 2025</time></td>
+<td><strong>AIFS ENS operational</strong><div class="sub">ECMWF</div></td>
+<td><span class="dom">Weather &amp; climate</span></td>
+<td>51-member AI ensemble running alongside the physics-based IFS ensemble.</td>
+<td class="nowrap">Operational</td>
+<td><a href="https://www.ecmwf.int/en/newsletter/185/earth-system-science/aifs-ens-becomes-operational">ECMWF</a></td>
+</tr><tr data-d="Physics foundation models">
+<td class="nowrap"><time datetime="2025-06">Jun 2025</time></td>
+<td><strong>PhysiX</strong><div class="sub">Nguyen et al. (UCLA)</div></td>
+<td><span class="dom">Physics foundation models</span></td>
+<td>4.5B-parameter autoregressive model over discrete tokens of physical fields.</td>
+<td class="nowrap"></td>
+<td><a href="https://arxiv.org/abs/2506.17774">arXiv:2506.17774</a></td>
+</tr><tr data-d="Weather &amp; climate">
+<td class="nowrap"><time datetime="2025-02-25">Feb 25, 2025</time></td>
+<td><strong>AIFS Single operational</strong><div class="sub">ECMWF</div></td>
+<td><span class="dom">Weather &amp; climate</span></td>
+<td>First operational deterministic AI forecast from a major centre.</td>
+<td class="nowrap">Open weights</td>
+<td><a href="https://www.ecmwf.int/en/about/media-centre/news/2025/ecmwfs-ai-forecasts-become-operational">ECMWF</a></td>
+</tr><tr data-d="CFD surrogates">
+<td class="nowrap"><time datetime="2025-01">Jan 2025</time></td>
+<td><strong>DoMINO</strong><div class="sub">NVIDIA</div></td>
+<td><span class="dom">CFD surrogates</span></td>
+<td>Decomposable multiscale iterative neural operator for external aerodynamics on large 3D geometries.</td>
+<td class="nowrap">Open code</td>
+<td><a href="https://arxiv.org/abs/2501.13350">arXiv:2501.13350</a></td>
+</tr><tr data-d="Benchmarks &amp; data">
+<td class="nowrap"><time datetime="2024-12">Dec 2024</time></td>
+<td><strong>The Well</strong><div class="sub">Polymathic AI</div></td>
+<td><span class="dom">Benchmarks &amp; data</span></td>
+<td>15 TB collection of physics simulations across fluids, astrophysics, biology and more.</td>
+<td class="nowrap">Open weights</td>
+<td><a href="https://arxiv.org/abs/2412.00568">arXiv:2412.00568</a></td>
+</tr><tr data-d="Physics foundation models">
+<td class="nowrap"><time datetime="2024-05-29">May 29, 2024</time></td>
+<td><strong>Poseidon</strong><div class="sub">Herde et al. (ETH Zürich)</div></td>
+<td><span class="dom">Physics foundation models</span></td>
+<td>Multiscale operator transformer pretrained on fluid PDEs and fine-tuned to new ones with few samples.</td>
+<td class="nowrap">Open weights</td>
+<td><a href="https://arxiv.org/abs/2405.19101">arXiv:2405.19101</a></td>
+</tr><tr data-d="Weather &amp; climate">
+<td class="nowrap"><time datetime="2024-05-20">May 20, 2024</time></td>
+<td><strong>Aurora</strong><div class="sub">Microsoft Research</div></td>
+<td><span class="dom">Weather &amp; climate</span></td>
+<td>1.3B-parameter atmospheric foundation model fine-tuned for weather, air quality, and waves.</td>
+<td class="nowrap">Open weights</td>
+<td><a href="https://arxiv.org/abs/2405.13063">arXiv:2405.13063</a></td>
+</tr><tr data-d="Neural operators">
+<td class="nowrap"><time datetime="2024-02-04">Feb 4, 2024</time></td>
+<td><strong>Transolver</strong><div class="sub">Wu et al. (Tsinghua)</div></td>
+<td><span class="dom">Neural operators</span></td>
+<td>Physics-attention transformer that learns on arbitrary meshes by grouping points into learned slices.</td>
+<td class="nowrap">Open code</td>
+<td><a href="https://arxiv.org/abs/2402.02366">arXiv:2402.02366</a></td>
+</tr><tr data-d="Weather &amp; climate">
+<td class="nowrap"><time datetime="2023-12-25">Dec 25, 2023</time></td>
+<td><strong>GenCast</strong><div class="sub">Google DeepMind</div></td>
+<td><span class="dom">Weather &amp; climate</span></td>
+<td>Diffusion-based probabilistic ensemble forecaster; later published in Nature (2024).</td>
+<td class="nowrap">Open weights</td>
+<td><a href="https://arxiv.org/abs/2312.15796">arXiv:2312.15796</a></td>
+</tr><tr data-d="Weather &amp; climate">
+<td class="nowrap"><time datetime="2023-11-13">Nov 13, 2023</time></td>
+<td><strong>NeuralGCM</strong><div class="sub">Google Research</div></td>
+<td><span class="dom">Weather &amp; climate</span></td>
+<td>Hybrid model: differentiable dynamical core plus learned physics for weather and climate.</td>
+<td class="nowrap">Open weights</td>
+<td><a href="https://arxiv.org/abs/2311.07222">arXiv:2311.07222</a></td>
+</tr><tr data-d="Weather &amp; climate">
+<td class="nowrap"><time datetime="2022-12-24">Dec 24, 2022</time></td>
+<td><strong>GraphCast</strong><div class="sub">Google DeepMind</div></td>
+<td><span class="dom">Weather &amp; climate</span></td>
+<td>Graph neural network medium-range forecaster at 0.25°; basis of NOAA&#x27;s AIGFS.</td>
+<td class="nowrap">Open weights</td>
+<td><a href="https://arxiv.org/abs/2212.12794">arXiv:2212.12794</a></td>
+</tr><tr data-d="Weather &amp; climate">
+<td class="nowrap"><time datetime="2022-11-03">Nov 3, 2022</time></td>
+<td><strong>Pangu-Weather</strong><div class="sub">Huawei Cloud</div></td>
+<td><span class="dom">Weather &amp; climate</span></td>
+<td>3D Earth-specific transformer; among the first ML models to beat operational NWP on key scores.</td>
+<td class="nowrap">Open weights</td>
+<td><a href="https://arxiv.org/abs/2211.02556">arXiv:2211.02556</a></td>
+</tr><tr data-d="Weather &amp; climate">
+<td class="nowrap"><time datetime="2022-02-22">Feb 22, 2022</time></td>
+<td><strong>FourCastNet</strong><div class="sub">NVIDIA et al.</div></td>
+<td><span class="dom">Weather &amp; climate</span></td>
+<td>Adaptive Fourier neural operator for global forecasting at 0.25°.</td>
+<td class="nowrap">Open weights</td>
+<td><a href="https://arxiv.org/abs/2202.11214">arXiv:2202.11214</a></td>
+</tr><tr data-d="Neural operators">
+<td class="nowrap"><time datetime="2020-10-18">Oct 18, 2020</time></td>
+<td><strong>Fourier Neural Operator (FNO)</strong><div class="sub">Li et al. (Caltech)</div></td>
+<td><span class="dom">Neural operators</span></td>
+<td>Learns PDE solution operators with global convolutions in Fourier space; resolution-invariant.</td>
+<td class="nowrap">Open code</td>
+<td><a href="https://arxiv.org/abs/2010.08895">arXiv:2010.08895</a></td>
+</tr><tr data-d="CFD surrogates">
+<td class="nowrap"><time datetime="2020-10-07">Oct 7, 2020</time></td>
+<td><strong>MeshGraphNets</strong><div class="sub">DeepMind</div></td>
+<td><span class="dom">CFD surrogates</span></td>
+<td>Message-passing GNN that simulates physics directly on simulation meshes.</td>
+<td class="nowrap">Open code</td>
+<td><a href="https://arxiv.org/abs/2010.03409">arXiv:2010.03409</a></td>
+</tr><tr data-d="Neural operators">
+<td class="nowrap"><time datetime="2019-10-08">Oct 8, 2019</time></td>
+<td><strong>DeepONet</strong><div class="sub">Lu</div></td>
+<td><span class="dom">Neural operators</span></td>
+<td>Branch/trunk network that learns nonlinear operators, based on the universal approximation theorem for operators.</td>
+<td class="nowrap">Open code</td>
+<td><a href="https://arxiv.org/abs/1910.03193">arXiv:1910.03193</a></td>
+</tr><tr data-d="Methods">
+<td class="nowrap"><time datetime="2017-11-28">Nov 28, 2017</time></td>
+<td><strong>Physics-informed neural networks (PINNs)</strong><div class="sub">Raissi</div></td>
+<td><span class="dom">Methods</span></td>
+<td>Neural networks trained with the PDE residual as a loss term.</td>
+<td class="nowrap">Open code</td>
+<td><a href="https://arxiv.org/abs/1711.10561">arXiv:1711.10561</a></td>
+</tr></tbody></table></div>
+<script>
+document.querySelectorAll('.chip').forEach(function(b){b.onclick=function(){
+  document.querySelectorAll('.chip').forEach(function(c){c.classList.toggle('on',c===b)});
+  document.querySelectorAll('.releases tbody tr').forEach(function(tr){
+    tr.hidden=!(b.dataset.d==='all'||tr.dataset.d===b.dataset.d)});
+}});
+</script>
+</main>
+<footer class="foot">
+  <p>SciML Weekly · written by <a href="https://meshram1.github.io/">Aditya Kumar Meshram</a> ·
+  <a href="feed.xml">RSS</a> · Summaries are my own reading of the cited sources; always check the original.</p>
+</footer>
+</div>
+<script>
+function toggleTheme(){
+  var r=document.documentElement, dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+  r.dataset.theme=dark?'light':'dark'; try{localStorage.setItem('theme',r.dataset.theme)}catch(e){}
+}
+</script>
+</body>
+</html>

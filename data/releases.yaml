@@ -1,0 +1,88 @@
+# One entry per release. date: YYYY-MM-DD, or YYYY-MM when only the month is certain.
+# domain: Weather & climate | Neural operators | Physics foundation models | CFD surrogates | Benchmarks & data | Tools | Methods
+# access: open (weights) | code | api | operational | closed   (omit if unknown)
+
+- {date: 2026-09-15, name: VAMO, org: Liao, Guilleminot, Tarokh, domain: Methods, access: closed,
+   what: "Variational latent Markov operator; probabilistic latent transitions to keep long autoregressive PDE rollouts stable.",
+   source: "https://arxiv.org/abs/2609.16621", source_label: arXiv:2609.16621}
+- {date: 2026-09-15, name: Neural field ensembles (ONERA CRM challenge winner), org: Salesses, Sainvitu, Benamara, domain: CFD surrogates,
+   what: "Conditional neural field predicting wall pressure and skin friction on the NASA CRM; ~1000x fewer parameters than the baseline.",
+   source: "https://arxiv.org/abs/2609.17160", source_label: arXiv:2609.17160}
+- {date: 2026-09-08, name: ONECYL benchmark, org: Michel, Campos, Dujardin, Areiza, Meliga, Hachem, domain: Benchmarks & data,
+   what: "450 cylinder-flow simulations (270k snapshots) across laminar to high-Re regimes for graph-based surrogates.",
+   source: "https://arxiv.org/abs/2609.08947", source_label: arXiv:2609.08947}
+- {date: 2026-09-03, name: WeatherNext 3, org: Google DeepMind & Google Research, domain: Weather & climate, access: api,
+   what: "Hourly global forecasts, 5 km on key surface variables, from a single FGN mesh transformer that ingests live satellite imagery.",
+   source: "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/introducing-weathernext-3/", source_label: Google blog}
+- {date: 2026-08-14, name: Transferable Latent Operator (TLO), org: Li et al., domain: Neural operators,
+   what: "Trained on Eulerian fields only, it rolls out Lagrangian particle trajectories zero-shot.",
+   source: "https://arxiv.org/abs/2608.14120", source_label: arXiv:2608.14120}
+- {date: 2026-08-12, name: TREX distillation, org: Musekamp, Ariguib, Manolache, Niepert, domain: Physics foundation models,
+   what: "Distills a fine-tuned PDE foundation model into a student that is orders of magnitude smaller and more than 10x faster.",
+   source: "https://arxiv.org/abs/2608.11937", source_label: arXiv:2608.11937}
+- {date: 2026-08, name: PhysicsNeMo 26.08, org: NVIDIA, domain: Tools, access: code,
+   what: "Adds AeroJEPA, xDeepONet, Strata (weather), GeoTransolver/FLARE out of experimental, GP-based UQ head, LoRA fine-tuning.",
+   source: "https://docs.nvidia.com/physicsnemo/latest/release-notes/index.html", source_label: Release notes}
+- {date: 2025-12-17, name: "AIGFS / AIGEFS / HGEFS", org: NOAA, domain: Weather & climate, access: operational,
+   what: "First operational US AI global models. AIGFS is GraphCast-based and uses up to 99.7% less compute than GFS; HGEFS is a hybrid AI+physics ensemble.",
+   source: "https://www.noaa.gov/news-release/noaa-deploys-new-generation-of-ai-driven-global-weather-models", source_label: NOAA}
+- {date: 2025-11, name: WeatherNext 2, org: Google DeepMind, domain: Weather & climate, access: api,
+   what: "Functional Generative Network (FGN) ensemble; hundreds of scenarios per initial state, 8x faster than its predecessor.",
+   source: "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/weathernext-2/", source_label: Google blog}
+- {date: 2025-11, name: Walrus, org: Polymathic AI, domain: Physics foundation models, access: open,
+   what: "1.3B-parameter transformer for continuum dynamics, trained on 19 scenarios / 63 fields in 2D and 3D.",
+   source: "https://arxiv.org/abs/2511.15684", source_label: arXiv:2511.15684}
+- {date: 2025-09-17, name: General Physics Transformer (GPhyT), org: Wiesner, Gray, Wessling, Baek, domain: Physics foundation models,
+   what: "Trained on 1.8 TB of simulation data; in-context learning to generalize to unseen systems.",
+   source: "https://arxiv.org/abs/2509.13805", source_label: arXiv:2509.13805}
+- {date: 2025-07-01, name: AIFS ENS operational, org: ECMWF, domain: Weather & climate, access: operational,
+   what: "51-member AI ensemble running alongside the physics-based IFS ensemble.",
+   source: "https://www.ecmwf.int/en/newsletter/185/earth-system-science/aifs-ens-becomes-operational", source_label: ECMWF}
+- {date: 2025-06, name: PhysiX, org: Nguyen et al. (UCLA), domain: Physics foundation models,
+   what: "4.5B-parameter autoregressive model over discrete tokens of physical fields.",
+   source: "https://arxiv.org/abs/2506.17774", source_label: arXiv:2506.17774}
+- {date: 2025-02-25, name: AIFS Single operational, org: ECMWF, domain: Weather & climate, access: open,
+   what: "First operational deterministic AI forecast from a major centre.",
+   source: "https://www.ecmwf.int/en/about/media-centre/news/2025/ecmwfs-ai-forecasts-become-operational", source_label: ECMWF}
+- {date: 2025-01, name: DoMINO, org: NVIDIA, domain: CFD surrogates, access: code,
+   what: "Decomposable multiscale iterative neural operator for external aerodynamics on large 3D geometries.",
+   source: "https://arxiv.org/abs/2501.13350", source_label: arXiv:2501.13350}
+- {date: 2024-12, name: The Well, org: Polymathic AI, domain: Benchmarks & data, access: open,
+   what: "15 TB collection of physics simulations across fluids, astrophysics, biology and more.",
+   source: "https://arxiv.org/abs/2412.00568", source_label: arXiv:2412.00568}
+- {date: 2024-05-29, name: Poseidon, org: Herde et al. (ETH Zürich), domain: Physics foundation models, access: open,
+   what: "Multiscale operator transformer pretrained on fluid PDEs and fine-tuned to new ones with few samples.",
+   source: "https://arxiv.org/abs/2405.19101", source_label: arXiv:2405.19101}
+- {date: 2024-05-20, name: Aurora, org: Microsoft Research, domain: Weather & climate, access: open,
+   what: "1.3B-parameter atmospheric foundation model fine-tuned for weather, air quality, and waves.",
+   source: "https://arxiv.org/abs/2405.13063", source_label: arXiv:2405.13063}
+- {date: 2024-02-04, name: Transolver, org: Wu et al. (Tsinghua), domain: Neural operators, access: code,
+   what: "Physics-attention transformer that learns on arbitrary meshes by grouping points into learned slices.",
+   source: "https://arxiv.org/abs/2402.02366", source_label: arXiv:2402.02366}
+- {date: 2023-12-25, name: GenCast, org: Google DeepMind, domain: Weather & climate, access: open,
+   what: "Diffusion-based probabilistic ensemble forecaster; later published in Nature (2024).",
+   source: "https://arxiv.org/abs/2312.15796", source_label: arXiv:2312.15796}
+- {date: 2023-11-13, name: NeuralGCM, org: Google Research, domain: Weather & climate, access: open,
+   what: "Hybrid model: differentiable dynamical core plus learned physics for weather and climate.",
+   source: "https://arxiv.org/abs/2311.07222", source_label: arXiv:2311.07222}
+- {date: 2022-12-24, name: GraphCast, org: Google DeepMind, domain: Weather & climate, access: open,
+   what: "Graph neural network medium-range forecaster at 0.25°; basis of NOAA's AIGFS.",
+   source: "https://arxiv.org/abs/2212.12794", source_label: arXiv:2212.12794}
+- {date: 2022-11-03, name: Pangu-Weather, org: Huawei Cloud, domain: Weather & climate, access: open,
+   what: "3D Earth-specific transformer; among the first ML models to beat operational NWP on key scores.",
+   source: "https://arxiv.org/abs/2211.02556", source_label: arXiv:2211.02556}
+- {date: 2022-02-22, name: FourCastNet, org: NVIDIA et al., domain: Weather & climate, access: open,
+   what: "Adaptive Fourier neural operator for global forecasting at 0.25°.",
+   source: "https://arxiv.org/abs/2202.11214", source_label: arXiv:2202.11214}
+- {date: 2020-10-18, name: Fourier Neural Operator (FNO), org: Li et al. (Caltech), domain: Neural operators, access: code,
+   what: "Learns PDE solution operators with global convolutions in Fourier space; resolution-invariant.",
+   source: "https://arxiv.org/abs/2010.08895", source_label: arXiv:2010.08895}
+- {date: 2020-10-07, name: MeshGraphNets, org: DeepMind, domain: CFD surrogates, access: code,
+   what: "Message-passing GNN that simulates physics directly on simulation meshes.",
+   source: "https://arxiv.org/abs/2010.03409", source_label: arXiv:2010.03409}
+- {date: 2019-10-08, name: DeepONet, org: Lu, Jin, Karniadakis (Brown), domain: Neural operators, access: code,
+   what: "Branch/trunk network that learns nonlinear operators, based on the universal approximation theorem for operators.",
+   source: "https://arxiv.org/abs/1910.03193", source_label: arXiv:1910.03193}
+- {date: 2017-11-28, name: Physics-informed neural networks (PINNs), org: Raissi, Perdikaris, Karniadakis, domain: Methods, access: code,
+   what: "Neural networks trained with the PDE residual as a loss term.",
+   source: "https://arxiv.org/abs/1711.10561", source_label: arXiv:1711.10561}
