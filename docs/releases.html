@@ -5,30 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Model timeline · SciML Weekly</title>
 <meta name="description" content="Dated timeline of AI models for physics, fluids and weather.">
-<meta property="og:title" content="Model timeline · SciML Weekly">
-<meta property="og:description" content="Dated timeline of AI models for physics, fluids and weather.">
 <link rel="alternate" type="application/rss+xml" title="SciML Weekly" href="feed.xml">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="style.css?v=fd3be331">
-<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="stylesheet" href="style.css?v=e2f2374a">
 
 </head>
 <body>
 <div class="wrap">
 <header class="top">
-  <a class="brand" href="index.html"><span class="brand-mark">∇</span> SciML Weekly</a>
-  <nav>
-    <a href="index.html">Issues</a>
-    <a href="releases.html">Model timeline</a>
-    <a href="tags.html">Topics</a>
-    <a href="about.html">About</a>
-    <button class="theme-toggle" type="button" aria-label="Toggle dark mode" onclick="toggleTheme()">◐</button>
-  </nav>
+  <a class="brand" href="index.html">SciML Weekly</a>
+  <nav><a href="index.html">Issues</a><span class="sep">|</span><a href="releases.html">Timeline</a><span class="sep">|</span><a href="about.html">About</a><span class="sep">|</span><a href="https://meshram1.github.io/">Home</a></nav>
 </header>
 <main>
-<h1 class="page-title">Model &amp; release timeline</h1>
-<p class="lede">Dated releases of notable AI models, datasets, and tools for physics, fluids, and weather. The date is the first public
-release (preprint, announcement, or software release), which can be earlier than journal publication. Every row links to its source.</p>
+<h1 class="page-title">Timeline</h1>
+<p class="lede">Notable AI models, datasets and tools for physics, fluids and weather, by first public release date. Every row links to its source.</p>
 <div class="chips" role="group" aria-label="Filter by domain"><button class="chip on" data-d="all">All</button><button class="chip" data-d="Benchmarks &amp; data">Benchmarks &amp; data</button><button class="chip" data-d="CFD surrogates">CFD surrogates</button><button class="chip" data-d="Methods">Methods</button><button class="chip" data-d="Neural operators">Neural operators</button><button class="chip" data-d="Physics foundation models">Physics foundation models</button><button class="chip" data-d="Tools">Tools</button><button class="chip" data-d="Weather &amp; climate">Weather &amp; climate</button></div>
 <div class="table-wrap"><table class="releases">
 <thead><tr><th>Date</th><th>Release</th><th>Domain</th><th>What it is</th><th>Access</th><th>Source</th></tr></thead>
@@ -258,16 +247,6 @@ document.querySelectorAll('.chip').forEach(function(b){b.onclick=function(){
 }});
 </script>
 </main>
-<footer class="foot">
-  <p>SciML Weekly · written by <a href="https://meshram1.github.io/">Aditya Kumar Meshram</a> ·
-  <a href="feed.xml">RSS</a> · Summaries are my own reading of the cited sources; always check the original.</p>
-</footer>
 </div>
-<script>
-function toggleTheme(){
-  var r=document.documentElement, dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
-  r.dataset.theme=dark?'light':'dark'; try{localStorage.setItem('theme',r.dataset.theme)}catch(e){}
-}
-</script>
 </body>
 </html>

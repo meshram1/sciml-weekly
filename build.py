@@ -27,7 +27,7 @@ SITE = yaml.safe_load((ROOT / "site.yaml").read_text())
 BASE = SITE["base_url"].rstrip("/")
 
 MD_EXT = ["tables", "footnotes", "fenced_code", "attr_list", "md_in_html", "toc", "abbr", "def_list"]
-MD_CFG = {"footnotes": {"BACKLINK_TEXT": "↩"}, "toc": {"permalink": "#", "permalink_class": "anchor"}}
+MD_CFG = {"footnotes": {"BACKLINK_TEXT": "↩"}}
 
 # ---------------------------------------------------------------- helpers
 
@@ -79,6 +79,7 @@ def slugify(s):
 
 def page(title, body, root="", description="", extra_head=""):
     desc = esc(description or SITE["description"])
+    sep = '<span class="sep">|</span>'
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -86,40 +87,20 @@ def page(title, body, root="", description="", extra_head=""):
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{esc(title)}</title>
 <meta name="description" content="{desc}">
-<meta property="og:title" content="{esc(title)}">
-<meta property="og:description" content="{desc}">
 <link rel="alternate" type="application/rss+xml" title="{esc(SITE['title'])}" href="{root}feed.xml">
-<link rel="icon" href="{root}favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="{root}style.css?v={SITE_VERSION}">
-<script>try{{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}}catch(e){{}}</script>
 {extra_head}
 </head>
 <body>
 <div class="wrap">
 <header class="top">
-  <a class="brand" href="{root}index.html"><span class="brand-mark">∇</span> {esc(SITE['title'])}</a>
-  <nav>
-    <a href="{root}index.html">Issues</a>
-    <a href="{root}releases.html">Model timeline</a>
-    <a href="{root}tags.html">Topics</a>
-    <a href="{root}about.html">About</a>
-    <button class="theme-toggle" type="button" aria-label="Toggle dark mode" onclick="toggleTheme()">◐</button>
-  </nav>
+  <a class="brand" href="{root}index.html">{esc(SITE['title'])}</a>
+  <nav><a href="{root}index.html">Issues</a>{sep}<a href="{root}releases.html">Timeline</a>{sep}<a href="{root}about.html">About</a>{sep}<a href="{esc(SITE['author_url'])}">Home</a></nav>
 </header>
 <main>
 {body}
 </main>
-<footer class="foot">
-  <p>{esc(SITE['title'])} · written by <a href="{esc(SITE['author_url'])}">{esc(SITE['author'])}</a> ·
-  <a href="{root}feed.xml">RSS</a> · Summaries are my own reading of the cited sources; always check the original.</p>
-</footer>
 </div>
-<script>
-function toggleTheme(){{
-  var r=document.documentElement, dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
-  r.dataset.theme=dark?'light':'dark'; try{{localStorage.setItem('theme',r.dataset.theme)}}catch(e){{}}
-}}
-</script>
 </body>
 </html>
 """
@@ -129,18 +110,6 @@ KATEX = """<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
   onload="renderMathInElement(document.querySelector('.post-body'),{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false})"></script>"""
-
-
-def tag_links(tags, root):
-    return " ".join(f'<a class="tag" href="{root}tags.html#{slugify(t)}">{esc(t)}</a>' for t in tags)
-
-
-def toc_html(tokens):
-    items = [t for t in tokens if t["level"] == 2]
-    if len(items) < 3:
-        return ""
-    lis = "".join(f'<li><a href="#{t["id"]}">{t["name"]}</a></li>' for t in items)
-    return f'<nav class="toc" aria-label="Contents"><p class="toc-title">In this issue</p><ol>{lis}</ol></nav>'
 
 
 # ---------------------------------------------------------------- build steps
@@ -173,66 +142,33 @@ def load_posts():
 
 def build_post(p, prev_p, next_p):
     root = "../"
-    issue = f'<span class="issue">Issue #{p["issue"]}</span> · ' if p.get("issue") else ""
-    nav = '<nav class="post-nav">'
-    nav += f'<a href="{prev_p["slug"]}.html">← {esc(prev_p["title"])}</a>' if prev_p else "<span></span>"
-    nav += f'<a href="{next_p["slug"]}.html">{esc(next_p["title"])} →</a>' if next_p else "<span></span>"
-    nav += "</nav>"
+    issue = f' &middot; Issue #{p["issue"]}' if p.get("issue") else ""
+    nav = ""
+    if prev_p or next_p:
+        nav = '<nav class="post-nav">'
+        nav += f'<a href="{prev_p["slug"]}.html">&larr; {esc(prev_p["title"])}</a>' if prev_p else "<span></span>"
+        nav += f'<a href="{next_p["slug"]}.html">{esc(next_p["title"])} &rarr;</a>' if next_p else "<span></span>"
+        nav += "</nav>"
     body = f"""<article class="post">
-<header class="post-head">
-  <p class="meta">{issue}<time datetime="{p['date'].isoformat()}">{fmt_date(p['date'])}</time> · {p['minutes']} min read</p>
-  <h1>{esc(p['title'])}</h1>
-  <p class="dek">{esc(p.get('summary', ''))}</p>
-  <p class="tags">{tag_links(p['tags'], root)}</p>
-</header>
-{toc_html(p['toc'])}
+<h1>{esc(p['title'])}</h1>
+<p class="meta"><time datetime="{p['date'].isoformat()}">{fmt_date(p['date'])}</time>{issue} &middot; {p['minutes']} min read</p>
 <div class="post-body">
 {p['html']}
 </div>
-</article>
-{nav}"""
+{nav}
+</article>"""
     head = KATEX if p["has_math"] else ""
     (OUT / "posts" / f"{p['slug']}.html").write_text(
         page(f"{p['title']} · {SITE['title']}", body, root, p.get("summary", ""), head))
 
 
 def build_index(posts):
-    latest, rest = (posts[0], posts[1:]) if posts else (None, [])
-    hero = ""
-    if latest:
-        hero = f"""<section class="latest">
-  <p class="kicker">Latest{f" · Issue #{latest['issue']}" if latest.get('issue') else ""} · {fmt_date(latest['date'])}</p>
-  <h2><a href="posts/{latest['slug']}.html">{esc(latest['title'])}</a></h2>
-  <p>{esc(latest.get('summary', ''))}</p>
-  <p class="tags">{tag_links(latest['tags'], '')}</p>
-  <a class="read" href="posts/{latest['slug']}.html">Read issue · {latest['minutes']} min →</a>
-</section>"""
     items = "".join(
         f'<li><a href="posts/{p["slug"]}.html">{esc(p["title"])}</a>'
-        f'<span class="date">{fmt_date(p["date"])}</span></li>' for p in rest)
-    archive = f'<h2 class="section">Archive</h2><ul class="posts">{items}</ul>' if rest else ""
-    body = f"""<section class="intro">
-  <h1 class="tagline">{esc(SITE['tagline'])}</h1>
-  <p>{esc(SITE['description'])}</p>
-</section>
-{hero}
-{archive}"""
+        f'<span class="date">{fmt_date(p["date"])}</span></li>' for p in posts)
+    body = f"""<h1 class="tagline">{esc(SITE['tagline'])}</h1>
+<ul class="posts">{items}</ul>"""
     (OUT / "index.html").write_text(page(SITE["title"], body))
-
-
-def build_tags(posts):
-    by_tag = {}
-    for p in posts:
-        for t in p["tags"]:
-            by_tag.setdefault(t, []).append(p)
-    sections = []
-    for t in sorted(by_tag, key=str.lower):
-        lis = "".join(f'<li><a href="posts/{p["slug"]}.html">{esc(p["title"])}</a>'
-                      f'<span class="date">{fmt_date(p["date"])}</span></li>' for p in by_tag[t])
-        sections.append(f'<h2 class="section" id="{slugify(t)}">{esc(t)} <span class="count">{len(by_tag[t])}</span></h2>'
-                        f'<ul class="posts">{lis}</ul>')
-    body = '<h1 class="page-title">Topics</h1>' + "".join(sections)
-    (OUT / "tags.html").write_text(page(f"Topics · {SITE['title']}", body))
 
 
 def build_releases():
@@ -255,9 +191,8 @@ def build_releases():
 <td class="nowrap">{esc(weights)}</td>
 <td><a href="{esc(r['source'])}">{esc(r.get('source_label', 'source'))}</a></td>
 </tr>""")
-    body = f"""<h1 class="page-title">Model &amp; release timeline</h1>
-<p class="lede">Dated releases of notable AI models, datasets, and tools for physics, fluids, and weather. The date is the first public
-release (preprint, announcement, or software release), which can be earlier than journal publication. Every row links to its source.</p>
+    body = f"""<h1 class="page-title">Timeline</h1>
+<p class="lede">Notable AI models, datasets and tools for physics, fluids and weather, by first public release date. Every row links to its source.</p>
 <div class="chips" role="group" aria-label="Filter by domain">{chips}</div>
 <div class="table-wrap"><table class="releases">
 <thead><tr><th>Date</th><th>Release</th><th>Domain</th><th>What it is</th><th>Access</th><th>Source</th></tr></thead>
@@ -307,7 +242,6 @@ def main():
     for i, p in enumerate(posts):
         build_post(p, posts[i + 1] if i + 1 < len(posts) else None, posts[i - 1] if i > 0 else None)
     build_index(posts)
-    build_tags(posts)
     build_releases()
     build_about()
     build_feed(posts)

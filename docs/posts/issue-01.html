@@ -5,12 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rollouts that stay stable, hourly AI weather, and small models that win · SciML Weekly</title>
 <meta name="description" content="This issue covers September 2026: WeatherNext 3 moves AI weather forecasting to hourly updates, two papers attack error build-up in long neural-PDE rollouts, and in both a CFD challenge and a distillation study, much smaller models beat big ones.">
-<meta property="og:title" content="Rollouts that stay stable, hourly AI weather, and small models that win · SciML Weekly">
-<meta property="og:description" content="This issue covers September 2026: WeatherNext 3 moves AI weather forecasting to hourly updates, two papers attack error build-up in long neural-PDE rollouts, and in both a CFD challenge and a distillation study, much smaller models beat big ones.">
 <link rel="alternate" type="application/rss+xml" title="SciML Weekly" href="../feed.xml">
-<link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../style.css?v=fd3be331">
-<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="stylesheet" href="../style.css?v=e2f2374a">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
@@ -19,24 +15,13 @@
 <body>
 <div class="wrap">
 <header class="top">
-  <a class="brand" href="../index.html"><span class="brand-mark">∇</span> SciML Weekly</a>
-  <nav>
-    <a href="../index.html">Issues</a>
-    <a href="../releases.html">Model timeline</a>
-    <a href="../tags.html">Topics</a>
-    <a href="../about.html">About</a>
-    <button class="theme-toggle" type="button" aria-label="Toggle dark mode" onclick="toggleTheme()">◐</button>
-  </nav>
+  <a class="brand" href="../index.html">SciML Weekly</a>
+  <nav><a href="../index.html">Issues</a><span class="sep">|</span><a href="../releases.html">Timeline</a><span class="sep">|</span><a href="../about.html">About</a><span class="sep">|</span><a href="https://meshram1.github.io/">Home</a></nav>
 </header>
 <main>
 <article class="post">
-<header class="post-head">
-  <p class="meta"><span class="issue">Issue #1</span> · <time datetime="2026-09-30">Sep 30, 2026</time> · 12 min read</p>
-  <h1>Rollouts that stay stable, hourly AI weather, and small models that win</h1>
-  <p class="dek">This issue covers September 2026: WeatherNext 3 moves AI weather forecasting to hourly updates, two papers attack error build-up in long neural-PDE rollouts, and in both a CFD challenge and a distillation study, much smaller models beat big ones.</p>
-  <p class="tags"><a class="tag" href="../tags.html#weather-climate">Weather &amp; climate</a> <a class="tag" href="../tags.html#neural-operators">Neural operators</a> <a class="tag" href="../tags.html#foundation-models">Foundation models</a> <a class="tag" href="../tags.html#cfd-surrogates">CFD surrogates</a> <a class="tag" href="../tags.html#benchmarks">Benchmarks</a></p>
-</header>
-<nav class="toc" aria-label="Contents"><p class="toc-title">In this issue</p><ol><li><a href="#concept-of-the-week-why-neural-rollouts-drift">Concept of the week: why neural rollouts drift</a></li><li><a href="#1-vamo-predict-a-distribution-not-a-point">1. VAMO: predict a distribution, not a point</a></li><li><a href="#2-trex-shrinking-pde-foundation-models-into-fast-surrogates">2. TREX: shrinking PDE foundation models into fast surrogates</a></li><li><a href="#3-tlo-from-fixed-grids-to-moving-particles-zero-shot">3. TLO: from fixed grids to moving particles, zero-shot</a></li><li><a href="#4-weathernext-3-hourly-global-forecasts-from-satellite-data">4. WeatherNext 3: hourly global forecasts from satellite data</a></li><li><a href="#5-small-models-win-the-onera-crm-wall-distribution-challenge">5. Small models win: the ONERA CRM wall-distribution challenge</a></li><li><a href="#6-benchmarks-and-tools">6. Benchmarks and tools</a></li><li><a href="#worth-a-look-not-summarised">Worth a look (not summarised)</a></li></ol></nav>
+<h1>Rollouts that stay stable, hourly AI weather, and small models that win</h1>
+<p class="meta"><time datetime="2026-09-30">Sep 30, 2026</time> &middot; Issue #1 &middot; 12 min read</p>
 <div class="post-body">
 <div class="box tldr">
 <div class="box-title">TL;DR</div>
@@ -98,7 +83,7 @@
 <p>This is the first issue, so it covers roughly the last six weeks rather than a single week. One theme runs through most of the
 items: <strong>making neural surrogates trustworthy over long time horizons</strong>. That can mean forecasting the atmosphere hour by hour,
 or rolling a Navier–Stokes surrogate forward far beyond the horizon it was trained on.</p>
-<h2 id="concept-of-the-week-why-neural-rollouts-drift">Concept of the week: why neural rollouts drift<a class="anchor" href="#concept-of-the-week-why-neural-rollouts-drift" title="Permanent link">#</a></h2>
+<h2 id="concept-of-the-week-why-neural-rollouts-drift">Concept of the week: why neural rollouts drift</h2>
 <p>Most neural PDE solvers are <em>autoregressive</em>. They learn a one-step map $\mathcal{G}_\theta$ that takes the flow state at
 time $t$ and returns the state at $t+\Delta t$. The model is then applied to its own output again and again:</p>
 <p>$$u_{t+1} = \mathcal{G}_\theta(u_t), \qquad u_{t+2} = \mathcal{G}_\theta(\mathcal{G}_\theta(u_t)), \;\dots$$</p>
@@ -127,7 +112,7 @@ fine. Beyond it, a deterministic one-step model can blow up, while the methods b
 
 <p>Common fixes include adding noise during training ("pushforward" or noise-injection tricks), unrolling several steps in the loss,
 and enforcing physical constraints. Two papers this month take new angles on the problem.</p>
-<h2 id="1-vamo-predict-a-distribution-not-a-point">1. VAMO: predict a distribution, not a point<a class="anchor" href="#1-vamo-predict-a-distribution-not-a-point" title="Permanent link">#</a></h2>
+<h2 id="1-vamo-predict-a-distribution-not-a-point">1. VAMO: predict a distribution, not a point</h2>
 <p><strong>Paper:</strong> <em>Stable by Construction: Variational Latent Markov Operators for Long-Horizon PDE Prediction</em>. Liao, Guilleminot &amp; Tarokh, arXiv, Sep 15, 2026.<sup id="fnref:vamo"><a class="footnote-ref" href="#fn:vamo">2</a></sup></p>
 <p><strong>The idea in plain words.</strong> Instead of mapping one state to the next state, VAMO (Variational Autoencoding Markov Operator)
 encodes the physical field into a <strong>latent distribution</strong> and evolves that distribution with probabilistic transitions. It is a
@@ -143,7 +128,7 @@ stability" compared with deterministic and noise-injection baselines. It stays a
 <p><strong>Why it matters:</strong> Noise injection is a trick. VAMO turns it into a principled probabilistic model. If it holds up, you get
 stability and calibrated uncertainty from the same mechanism, and uncertainty is exactly what engineers ask for before they trust a surrogate.</p>
 </blockquote>
-<h2 id="2-trex-shrinking-pde-foundation-models-into-fast-surrogates">2. TREX: shrinking PDE foundation models into fast surrogates<a class="anchor" href="#2-trex-shrinking-pde-foundation-models-into-fast-surrogates" title="Permanent link">#</a></h2>
+<h2 id="2-trex-shrinking-pde-foundation-models-into-fast-surrogates">2. TREX: shrinking PDE foundation models into fast surrogates</h2>
 <p><strong>Paper:</strong> <em>Distillation of Foundation Models for Time-dependent PDEs</em>. Musekamp, Ariguib, Manolache &amp; Niepert, arXiv, Aug 12, 2026.<sup id="fnref:trex"><a class="footnote-ref" href="#fn:trex">3</a></sup></p>
 <p>Physics foundation models such as Poseidon, Walrus, and GPhyT (see the <a href="../releases.html">timeline</a>) are pretrained on many PDEs
 and fine-tuned with a few trajectories. The catch is size: a billion-parameter model is often <strong>slower than the solver you wanted
@@ -188,7 +173,7 @@ to replace</strong>.</p>
 <p><strong>Why it matters:</strong> This suggests a practical workflow: use a large pretrained model to handle the <em>low-data</em> problem, then
 distill it to handle the <em>speed</em> problem. It also echoes item 5 below, where a small model beat a big one.</p>
 </blockquote>
-<h2 id="3-tlo-from-fixed-grids-to-moving-particles-zero-shot">3. TLO: from fixed grids to moving particles, zero-shot<a class="anchor" href="#3-tlo-from-fixed-grids-to-moving-particles-zero-shot" title="Permanent link">#</a></h2>
+<h2 id="3-tlo-from-fixed-grids-to-moving-particles-zero-shot">3. TLO: from fixed grids to moving particles, zero-shot</h2>
 <p><strong>Paper:</strong> <em>From Fixed Grids to Moving Particles: A Transferable Latent Operator for Fluid Dynamics</em>. Li et al., arXiv, Aug 14, 2026.<sup id="fnref:tlo"><a class="footnote-ref" href="#fn:tlo">4</a></sup></p>
 <p>Fluid mechanics has two viewpoints. The <strong>Eulerian</strong> view watches the flow at fixed points in space, like a CFD grid. The
 <strong>Lagrangian</strong> view follows individual fluid parcels or particles, as in dispersion, mixing, or spray tracking. Almost all neural
@@ -228,7 +213,7 @@ rollout, meaning no particle data during training. Adding a little Lagrangian fi
 ordinary CFD output and get particle tracking for free. The trick is general: any operator with a continuous, queryable decoder
 (neural fields, many transformer operators) could be used this way.</p>
 </blockquote>
-<h2 id="4-weathernext-3-hourly-global-forecasts-from-satellite-data">4. WeatherNext 3: hourly global forecasts from satellite data<a class="anchor" href="#4-weathernext-3-hourly-global-forecasts-from-satellite-data" title="Permanent link">#</a></h2>
+<h2 id="4-weathernext-3-hourly-global-forecasts-from-satellite-data">4. WeatherNext 3: hourly global forecasts from satellite data</h2>
 <p><strong>Source:</strong> Google DeepMind &amp; Google Research, "Introducing WeatherNext 3", Sep 3, 2026.<sup id="fnref:wn3"><a class="footnote-ref" href="#fn:wn3">1</a></sup></p>
 <p>Weather is the most visible success story of AI for physics. Operational centres already run AI models: ECMWF's AIFS since
 February 2025<sup id="fnref:aifs"><a class="footnote-ref" href="#fn:aifs">10</a></sup> and NOAA's GraphCast-based AIGFS since December 2025.<sup id="fnref:noaa"><a class="footnote-ref" href="#fn:noaa">11</a></sup> WeatherNext 3 changes three things.</p>
@@ -276,7 +261,7 @@ expensive step where traditional forecasting fuses observations into the model s
 <p><strong>Caveat:</strong> Every number above comes from Google's own announcement. Independent evaluations (WeatherBench-style
 comparisons, verification by national met services) usually follow weeks to months later. We'll cover them when they appear.</p>
 </blockquote>
-<h2 id="5-small-models-win-the-onera-crm-wall-distribution-challenge">5. Small models win: the ONERA CRM wall-distribution challenge<a class="anchor" href="#5-small-models-win-the-onera-crm-wall-distribution-challenge" title="Permanent link">#</a></h2>
+<h2 id="5-small-models-win-the-onera-crm-wall-distribution-challenge">5. Small models win: the ONERA CRM wall-distribution challenge</h2>
 <p><strong>Paper:</strong> <em>Neural Field Ensembles for Aerodynamic Surface Prediction: Winning Solution to the ONERA CRM Wall Distribution 2025
 Challenge</em>. Salesses, Sainvitu &amp; Benamara, arXiv, Sep 15, 2026.<sup id="fnref:crm"><a class="footnote-ref" href="#fn:crm">5</a></sup></p>
 <p>The task was to predict <strong>surface pressure and skin-friction distributions</strong> on the NASA Common Research Model (a
@@ -313,7 +298,7 @@ aerodynamic surrogate modeling on complex geometries under limited-data conditio
 <p><strong>Why it matters:</strong> This is a useful reminder when choosing a model. With a few hundred simulations, a well-regularised small
 model can beat a big architecture. Start with the simplest thing that respects the geometry.</p>
 </blockquote>
-<h2 id="6-benchmarks-and-tools">6. Benchmarks and tools<a class="anchor" href="#6-benchmarks-and-tools" title="Permanent link">#</a></h2>
+<h2 id="6-benchmarks-and-tools">6. Benchmarks and tools</h2>
 <p><strong>ONECYL: a benchmark for graph surrogates</strong><sup id="fnref:onecyl"><a class="footnote-ref" href="#fn:onecyl">6</a></sup> (Sep 8). Flow past a cylinder is the "hello world" of CFD, but most ML
 datasets stay at low Reynolds numbers. ONECYL has <strong>450 high-fidelity simulations and 270,000 snapshots</strong> across laminar,
 transitional, and high-Re regimes, with randomised geometries and meshes. Two findings from the Graph Transformer baseline:</p>
@@ -363,7 +348,7 @@ transitional, and high-Re regimes, with randomised geometries and meshes. Two fi
 <p>The PhysicsNeMo team also published a related post, <em>Don't Yet Trust the Model, Test the Physics</em> (May 29, 2026). It argues
 that a surrogate "can achieve a low mean squared error (MSE) while still violating important physical constraints," and
 recommends always reporting integrated quantities such as <strong>drag and lift coefficient errors</strong> alongside field L2 errors.<sup id="fnref:pnemo-blog"><a class="footnote-ref" href="#fn:pnemo-blog">8</a></sup></p>
-<h2 id="worth-a-look-not-summarised">Worth a look (not summarised)<a class="anchor" href="#worth-a-look-not-summarised" title="Permanent link">#</a></h2>
+<h2 id="worth-a-look-not-summarised">Worth a look (not summarised)</h2>
 <p>These appeared in the last few weeks. I haven't read them closely enough to summarise, so here are the titles and links only:</p>
 <ul>
 <li><em>RheOFormer: A generative transformer model for simulation of complex fluids and flows</em>. Operator learning for viscoelastic
@@ -430,19 +415,9 @@ source wins, and I'll correct the post.</em></p>
 </ol>
 </div>
 </div>
+
 </article>
-<nav class="post-nav"><span></span><span></span></nav>
 </main>
-<footer class="foot">
-  <p>SciML Weekly · written by <a href="https://meshram1.github.io/">Aditya Kumar Meshram</a> ·
-  <a href="../feed.xml">RSS</a> · Summaries are my own reading of the cited sources; always check the original.</p>
-</footer>
 </div>
-<script>
-function toggleTheme(){
-  var r=document.documentElement, dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
-  r.dataset.theme=dark?'light':'dark'; try{localStorage.setItem('theme',r.dataset.theme)}catch(e){}
-}
-</script>
 </body>
 </html>
