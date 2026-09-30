@@ -2,6 +2,15 @@
 # domain: Weather & climate | Neural operators | Physics foundation models | CFD surrogates | Benchmarks & data | Tools | Methods
 # access: open (weights) | code | api | operational | closed   (omit if unknown)
 
+- {date: 2026-09-26, name: Off-attractor supervision (OAS), org: Dai, Mitra, Patel et al., domain: Methods,
+   what: "DNS relabelling of states where a 3D turbulence surrogate leaves the attractor; median time to failure 21 to 721 steps on 128^3 turbulence.",
+   source: "https://arxiv.org/abs/2609.32864", source_label: arXiv:2609.32864}
+- {date: 2026-09-25, name: TaiJi, org: Wang, Li, Wang, domain: Weather & climate,
+   what: "Lightweight CNN that learns state-dependent weights to blend Pangu-Weather, GraphCast, FuXi and ECMWF forecasts.",
+   source: "https://arxiv.org/abs/2609.31972", source_label: arXiv:2609.31972}
+- {date: 2026-09-22, name: West-WRF AI 2-km, org: Rouzegari et al., domain: Weather & climate,
+   what: "Stretched-grid AI weather model, 2 km over the western US and about 31 km elsewhere, for atmospheric-river precipitation and IVT.",
+   source: "https://arxiv.org/abs/2609.25512", source_label: arXiv:2609.25512}
 - {date: 2026-09-15, name: VAMO, org: Liao, Guilleminot, Tarokh, domain: Methods, access: closed,
    what: "Variational latent Markov operator; probabilistic latent transitions to keep long autoregressive PDE rollouts stable.",
    source: "https://arxiv.org/abs/2609.16621", source_label: arXiv:2609.16621}
