@@ -2,6 +2,18 @@
 # domain: Weather & climate | Neural operators | Physics foundation models | CFD surrogates | Benchmarks & data | Tools | Methods
 # access: open (weights) | code | api | operational | closed   (omit if unknown)
 
+- {date: 2026-10-02, name: SPEAR, org: Sun, Zhou, Wang et al., domain: Physics foundation models,
+   what: "Spectral-disentangled mixture-of-experts neural operator for PDE pretraining; aggregation halves the number of experts.",
+   source: "https://arxiv.org/abs/2610.03265", source_label: arXiv:2610.03265}
+- {date: 2026-09-29, name: Transolver-σ, org: Shangguan, Zhou, Wu et al., domain: Neural operators,
+   what: "Joint spectral-physical subspace neural PDE solver; 33.4% benchmark-averaged error reduction over the strongest baseline.",
+   source: "https://arxiv.org/abs/2609.37279", source_label: arXiv:2609.37279}
+- {date: 2026-09-29, name: Interpolating Neural Operator (INO), org: Guo, Lu, Shi, Hughes, Liu, domain: Neural operators,
+   what: "Data-free neural operator trained on the weak form on one CPU core, with a computable per-prediction residual error bound.",
+   source: "https://arxiv.org/abs/2609.36701", source_label: arXiv:2609.36701}
+- {date: 2026-09-28, name: PDE-JEPA, org: Tan, Zhang, Quan, Yang, domain: Physics foundation models,
+   what: "Masked-latent predictive pretraining for parametric PDE dynamics, with a geometry projector and physics-structured predictor.",
+   source: "https://arxiv.org/abs/2609.34715", source_label: arXiv:2609.34715}
 - {date: 2026-09-15, name: VAMO, org: Liao, Guilleminot, Tarokh, domain: Methods, access: closed,
    what: "Variational latent Markov operator; probabilistic latent transitions to keep long autoregressive PDE rollouts stable.",
    source: "https://arxiv.org/abs/2609.16621", source_label: arXiv:2609.16621}
