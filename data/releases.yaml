@@ -2,6 +2,12 @@
 # domain: Weather & climate | Neural operators | Physics foundation models | CFD surrogates | Benchmarks & data | Tools | Methods
 # access: open (weights) | code | api | operational | closed   (omit if unknown)
 
+- {date: 2026-10-08, name: Mesh-Native Convolution (MNC), org: Maierhofer, Cranmer, Mukhopadhyay, domain: Physics foundation models,
+   what: "Locality-aware tokenisation layer for unstructured meshes; retrofits grid-pretrained foundation models to meshes.",
+   source: "https://arxiv.org/abs/2610.12618", source_label: arXiv:2610.12618}
+- {date: 2026-10-07, name: F3NO, org: Wu, Jing, Lee, domain: Neural operators,
+   what: "Frequency-decomposed finite-time flow-map neural operator with cross-scale conditioning.",
+   source: "https://arxiv.org/abs/2610.10998", source_label: arXiv:2610.10998}
 - {date: 2026-09-15, name: VAMO, org: Liao, Guilleminot, Tarokh, domain: Methods, access: closed,
    what: "Variational latent Markov operator; probabilistic latent transitions to keep long autoregressive PDE rollouts stable.",
    source: "https://arxiv.org/abs/2609.16621", source_label: arXiv:2609.16621}
