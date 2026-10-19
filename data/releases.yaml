@@ -2,6 +2,15 @@
 # domain: Weather & climate | Neural operators | Physics foundation models | CFD surrogates | Benchmarks & data | Tools | Methods
 # access: open (weights) | code | api | operational | closed   (omit if unknown)
 
+- {date: 2026-10-15, name: Aurora fine-tuned on UKCA (chemistry-climate emulator), org: Weber, Kelp, domain: Weather & climate,
+   what: "Fine-tunes the Aurora foundation model on UKCA simulations to emulate meteorology, composition, aerosol and radiation; stable over 50 years, ~100x faster than UKCA.",
+   source: "https://arxiv.org/abs/2610.22555", source_label: arXiv:2610.22555}
+- {date: 2026-10-14, name: ReAl (Refine and Align), org: Xu, Xu, Yi, Jiang, Qi, domain: Methods,
+   what: "Model-agnostic plug-in: conditional flow-matching refiner restores high-frequency detail in pretrained PDE surrogates, aligned with trajectory-level rewards.",
+   source: "https://arxiv.org/abs/2610.20369", source_label: arXiv:2610.20369}
+- {date: 2026-10-13, name: HiRO-ACEv2, org: Kwa et al., domain: Weather & climate,
+   what: "100 km autoregressive emulator of X-SHiELD plus diffusion downscaling to 3 km; over 300x cheaper inference than the numerical storm-resolving model.",
+   source: "https://arxiv.org/abs/2610.17693", source_label: arXiv:2610.17693}
 - {date: 2026-09-15, name: VAMO, org: Liao, Guilleminot, Tarokh, domain: Methods, access: closed,
    what: "Variational latent Markov operator; probabilistic latent transitions to keep long autoregressive PDE rollouts stable.",
    source: "https://arxiv.org/abs/2609.16621", source_label: arXiv:2609.16621}
