@@ -21,7 +21,28 @@
 <div class="chips" role="group" aria-label="Filter by domain"><button class="chip on" data-d="all">All</button><button class="chip" data-d="Benchmarks &amp; data">Benchmarks &amp; data</button><button class="chip" data-d="CFD surrogates">CFD surrogates</button><button class="chip" data-d="Methods">Methods</button><button class="chip" data-d="Neural operators">Neural operators</button><button class="chip" data-d="Physics foundation models">Physics foundation models</button><button class="chip" data-d="Tools">Tools</button><button class="chip" data-d="Weather &amp; climate">Weather &amp; climate</button></div>
 <div class="table-wrap"><table class="releases">
 <thead><tr><th>Date</th><th>Release</th><th>Domain</th><th>What it is</th><th>Access</th><th>Source</th></tr></thead>
-<tbody><tr data-d="Methods">
+<tbody><tr data-d="Weather &amp; climate">
+<td class="nowrap"><time datetime="2026-10-15">Oct 15, 2026</time></td>
+<td><strong>Aurora fine-tuned on UKCA (chemistry-climate emulator)</strong><div class="sub">Weber</div></td>
+<td><span class="dom">Weather &amp; climate</span></td>
+<td>Fine-tunes the Aurora foundation model on UKCA simulations to emulate meteorology, composition, aerosol and radiation; stable over 50 years, ~100x faster than UKCA.</td>
+<td class="nowrap"></td>
+<td><a href="https://arxiv.org/abs/2610.22555">arXiv:2610.22555</a></td>
+</tr><tr data-d="Methods">
+<td class="nowrap"><time datetime="2026-10-14">Oct 14, 2026</time></td>
+<td><strong>ReAl (Refine and Align)</strong><div class="sub">Xu</div></td>
+<td><span class="dom">Methods</span></td>
+<td>Model-agnostic plug-in: conditional flow-matching refiner restores high-frequency detail in pretrained PDE surrogates, aligned with trajectory-level rewards.</td>
+<td class="nowrap"></td>
+<td><a href="https://arxiv.org/abs/2610.20369">arXiv:2610.20369</a></td>
+</tr><tr data-d="Weather &amp; climate">
+<td class="nowrap"><time datetime="2026-10-13">Oct 13, 2026</time></td>
+<td><strong>HiRO-ACEv2</strong><div class="sub">Kwa et al.</div></td>
+<td><span class="dom">Weather &amp; climate</span></td>
+<td>100 km autoregressive emulator of X-SHiELD plus diffusion downscaling to 3 km; over 300x cheaper inference than the numerical storm-resolving model.</td>
+<td class="nowrap"></td>
+<td><a href="https://arxiv.org/abs/2610.17693">arXiv:2610.17693</a></td>
+</tr><tr data-d="Methods">
 <td class="nowrap"><time datetime="2026-09-15">Sep 15, 2026</time></td>
 <td><strong>VAMO</strong><div class="sub">Liao</div></td>
 <td><span class="dom">Methods</span></td>
