@@ -2,6 +2,18 @@
 # domain: Weather & climate | Neural operators | Physics foundation models | CFD surrogates | Benchmarks & data | Tools | Methods
 # access: open (weights) | code | api | operational | closed   (omit if unknown)
 
+- {date: 2026-10-23, name: Neural basis method (NBM), org: Wang, Wang, Wang, domain: Methods,
+   what: "Fixed neural bases plus projection of Navier-Stokes; velocity-only residual gives an a posteriori error estimate for data-free training.",
+   source: "https://arxiv.org/abs/2610.32167", source_label: arXiv:2610.32167}
+- {date: 2026-10-23, name: CoPiT, org: Chen, Fan, Qiao, Wu, domain: CFD surrogates,
+   what: "Position-induced transformer with FiLM conditioning on global parameters for aerodynamic fields on unstructured meshes.",
+   source: "https://arxiv.org/abs/2610.32299", source_label: arXiv:2610.32299}
+- {date: 2026-10-15, name: L-SplineFNO, org: Gopakumar et al., domain: Neural operators,
+   what: "FNO coupled to a learnable B-spline transfer from unstructured meshes; scales to 46M nodes at inference on one A100.",
+   source: "https://arxiv.org/abs/2610.22446", source_label: arXiv:2610.22446}
+- {date: 2026-10-14, name: "∂-NO (del-NO)", org: Mehouachi, Jabari, domain: Neural operators, access: code,
+   what: "Architecture-agnostic augmentation giving any neural operator learnable fractional-derivative input features.",
+   source: "https://arxiv.org/abs/2610.20363", source_label: arXiv:2610.20363}
 - {date: 2026-09-15, name: VAMO, org: Liao, Guilleminot, Tarokh, domain: Methods, access: closed,
    what: "Variational latent Markov operator; probabilistic latent transitions to keep long autoregressive PDE rollouts stable.",
    source: "https://arxiv.org/abs/2609.16621", source_label: arXiv:2609.16621}
