@@ -2,6 +2,12 @@
 # domain: Weather & climate | Neural operators | Physics foundation models | CFD surrogates | Benchmarks & data | Tools | Methods
 # access: open (weights) | code | api | operational | closed   (omit if unknown)
 
+- {date: 2026-10-29, name: PhysicsNeMo-Mesh, org: NVIDIA, domain: Tools, access: code,
+   what: "GPU-native mesh module of PhysicsNeMo; reports 6.2-1,068x faster mesh operations than VTK with 72 threads (authors' benchmark).",
+   source: "https://arxiv.org/abs/2610.39072", source_label: arXiv:2610.39072}
+- {date: 2026-10-28, name: HotPOT, org: Li, Zhou, Luo, Chen, Jiang, Meng, Salim, Koniusz, domain: Physics foundation models, access: code,
+   what: "PDE pretraining operator transformer with per-equation neural-numerical experts; 50.7% lower rollout error than MoE-POT on average.",
+   source: "https://arxiv.org/abs/2610.38218", source_label: arXiv:2610.38218}
 - {date: 2026-09-15, name: VAMO, org: Liao, Guilleminot, Tarokh, domain: Methods, access: closed,
    what: "Variational latent Markov operator; probabilistic latent transitions to keep long autoregressive PDE rollouts stable.",
    source: "https://arxiv.org/abs/2609.16621", source_label: arXiv:2609.16621}
