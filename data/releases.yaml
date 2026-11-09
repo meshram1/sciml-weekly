@@ -2,6 +2,12 @@
 # domain: Weather & climate | Neural operators | Physics foundation models | CFD surrogates | Benchmarks & data | Tools | Methods
 # access: open (weights) | code | api | operational | closed   (omit if unknown)
 
+- {date: 2026-11-05, name: WaSP, org: Liu, Wang, Baptista, Stuart, Anandkumar, domain: Methods,
+   what: "Wasserstein Data Synthesis Pipeline; trains neural operators on manufactured data along a path of distributions, 3.9x to 9.5x lower error than solver-free baselines.",
+   source: "https://arxiv.org/abs/2611.07646", source_label: arXiv:2611.07646}
+- {date: 2026-11-05, name: Bayesian tensor-basis KAN (BKAN), org: Eidi, Jigjid, Buchanan, Dwight, domain: Methods,
+   what: "Bayesian Kolmogorov-Arnold Reynolds-stress closure separating epistemic and aleatoric uncertainty; overconfident under geometric extrapolation.",
+   source: "https://arxiv.org/abs/2611.07582", source_label: arXiv:2611.07582}
 - {date: 2026-09-15, name: VAMO, org: Liao, Guilleminot, Tarokh, domain: Methods, access: closed,
    what: "Variational latent Markov operator; probabilistic latent transitions to keep long autoregressive PDE rollouts stable.",
    source: "https://arxiv.org/abs/2609.16621", source_label: arXiv:2609.16621}
