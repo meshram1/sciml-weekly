@@ -2,6 +2,12 @@
 # domain: Weather & climate | Neural operators | Physics foundation models | CFD surrogates | Benchmarks & data | Tools | Methods
 # access: open (weights) | code | api | operational | closed   (omit if unknown)
 
+- {date: 2026-11-13, name: phi-PICT, org: Becktepe, Krasnov, Thuerey, Schumacher, Peitz, domain: Tools, access: code,
+   what: "Differentiable GPU-accelerated MHD solver for active flow control, integrated into FluidGym; >25% heat-transfer gain with gradient-based methods.",
+   source: "https://arxiv.org/abs/2611.18008", source_label: arXiv:2611.18008}
+- {date: 2026-11-13, name: Fuse-PINN, org: Pamela, Pailliez, Franck, Michel-Dansac, Navoret, Gopakumar, domain: Tools,
+   what: "Finite-element-based PINN framework for multi-GPU HPC training with an Energy Natural Gradient optimiser; near-perfect scaling reported.",
+   source: "https://arxiv.org/abs/2611.18409", source_label: arXiv:2611.18409}
 - {date: 2026-09-15, name: VAMO, org: Liao, Guilleminot, Tarokh, domain: Methods, access: closed,
    what: "Variational latent Markov operator; probabilistic latent transitions to keep long autoregressive PDE rollouts stable.",
    source: "https://arxiv.org/abs/2609.16621", source_label: arXiv:2609.16621}
