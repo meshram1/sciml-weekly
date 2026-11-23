@@ -2,6 +2,12 @@
 # domain: Weather & climate | Neural operators | Physics foundation models | CFD surrogates | Benchmarks & data | Tools | Methods
 # access: open (weights) | code | api | operational | closed   (omit if unknown)
 
+- {date: 2026-11-21, name: PhysicsNeMo 26.11 (v2.3.0), org: NVIDIA, domain: Tools, access: code,
+   what: "Adds conformal prediction and distributed UQ statistics, flow matching, GLOBE and DiffusionUNet3D as stable APIs, and experimental ISLA, AB-UPT, SMART and DeFormer models.",
+   source: "https://github.com/NVIDIA/physicsnemo/releases/tag/v2.3.0", source_label: GitHub release}
+- {date: 2026-11-19, name: PSTO, org: Li, Zhou, Wu, Lu, domain: CFD surrogates,
+   what: "PDE-structured transport operator trained on reaction-free data; extends to convection-diffusion-reaction flames without retraining.",
+   source: "https://arxiv.org/abs/2611.25607", source_label: arXiv:2611.25607}
 - {date: 2026-09-15, name: VAMO, org: Liao, Guilleminot, Tarokh, domain: Methods, access: closed,
    what: "Variational latent Markov operator; probabilistic latent transitions to keep long autoregressive PDE rollouts stable.",
    source: "https://arxiv.org/abs/2609.16621", source_label: arXiv:2609.16621}
